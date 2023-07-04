@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form-contact">
+        <h1 class="contact-title">Demande de prise de contact pour votre projet</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button>Valider</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block title %}
+    Contact
+{% endblock %}

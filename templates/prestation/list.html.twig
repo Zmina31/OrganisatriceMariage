@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h1 class="pres-title">Les Prestations</h1>
+
+    {% for prestation in prestations %}
+        {% if prestation.id != 12 %}
+            <div class="prestation">
+                <h2>{{ prestation.titre }}</h2>
+                <p>{{ prestation.paragraphe }}</p>
+                <div class="prestation-footer">
+                    <p class="prestation-price">Prix : {{ prestation.prix }} euros</p>
+                    <a class="prestation-interest" href="{{ path('prestation_contact', {'id': prestation.id}) }}">
+                        Je suis intéressé par cette prestation
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        {% endif%}
+    {% endfor %}
+{% endblock %}
+
