@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Nom:</th>
+            <th scope="col">Prénom:</th>
+            <th scope="col">Prestation:</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.user.nom }}</td>
+            <td>{{ contact.user.prenom }} </td>
+            <td>{{ contact.prestation.nom }} </td>
+            <td><a href="{{ path('contact_detail', {'id': contact.id }) }}">Voir</a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Nom:</th>
+            <th scope="col">Témoignage:</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for temoignage in temoignages %}
+        <tr>
+            <td>{{ temoignage.nom }}</td>
+            <td>{{ temoignage.contenu}} </td>
+            <td><a href="{{ path('temoignage_details', {'id': temoignage.id }) }}">Voir</a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+{% endblock %}

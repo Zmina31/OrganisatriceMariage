@@ -6,6 +6,7 @@ use App\Entity\Temoignage;
 use App\Entity\Temoignages;
 use App\Form\TemoignageFormType;
 use App\Form\TemoignagesFormType;
+use App\Repository\TemoignageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,9 +46,27 @@ class TemoignageController extends AbstractController
 
             // Rediriger l'utilisateur vers une page de remerciement ou une page de confirmation
 
-            return $this->redirectToRoute('app_contact');
+            return $this->redirectToRoute('app_temoignages');
         }
 
+        return $this->render('temoignage/temoignage.html.twig', [
+            'formt' => $formt->createView(),
+        ]);
+    }
+    #[Route('/temoignage/details/{id}', name: 'temoignage_details')] /*Pour l'onglet prestation affichage automatique*/
+    public function details(int $id, TemoignageRepository $temoignageRepository, Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        $temoignage = $temoignageRepository->find($id);
+        $formt = $this->createForm(TemoignageFormType::class, $temoignage);
+        $formt->handleRequest($request);
+
+        if ($formt->isSubmitted() && $formt->isValid()) {
+
+            $entityManager->persist($temoignage);
+            $entityManager->flush();
+
+        }
         return $this->render('temoignage/temoignage.html.twig', [
             'formt' => $formt->createView(),
         ]);

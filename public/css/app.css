@@ -1,3 +1,12 @@
+/*:root {
+    --bs-tertiary-bg: #efe4e0;
+    --bs-tertiary-bg-rgb: 239,228,224;
+}*/
+
+.container-fluid{
+    background-color: #f9c2ae;
+}
+
 body {
     background-color: #ffffff;
     background-attachment: fixed;
@@ -29,13 +38,6 @@ img {
     max-width: 100%;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    max-width: 150px;
-}
 
 body > .container {
     display: flex;
@@ -49,45 +51,8 @@ main {
 
 /*NAVBAR*/
 
-.navbar {
-    font-size: 110%;
-    justify-content: center;
-}
 
-.navbar ul {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
 
-.navbar li {
-    margin: 25px;
-}
-/* Media queries pour les écrans de taille inférieure à 768px (tablettes et téléphones) */
-@media (max-width: 768px) {
-    .navbar {
-        display: flex;
-        flex-direction: row; /* Aligner les liens horizontalement */
-        justify-content: center; /* Centrer les liens horizontalement */
-        align-items: center;
-        padding-bottom: 20px;
-        background-color: #ffffff; /* Couleur de fond de la navbar */
-        z-index: 999; /* Assurez-vous que la navbar reste au-dessus du contenu */
-    }
-
-    .navbar ul {
-        display: flex; /* Afficher les éléments de la navbar en colonne */
-        justify-content: center; /* Centrer les éléments horizontalement */
-        padding: 10px 0; /* Espacement autour des éléments */
-        gap: 10px; /* Ajouter un espace de 10px entre les liens */
-    }
-
-    .navbar li {
-
-        margin: 10px 0; /* Espacement vertical entre les éléments */
-    }
-}
 /*FIN NAVBAR*/
 
 .prestation {
@@ -115,7 +80,7 @@ main {
 
 .prestation-price {
     font-size: 18px;
-    color: #ff69b4;
+    color: #f9c2ae;
 }
 
 .prestation-interest {
@@ -127,7 +92,7 @@ main {
 
 .prestation-interest i {
     margin-left: 5px;
-    color: #ff69b4;
+    color: #f9c2ae;
 }
 
 h1 {
@@ -174,7 +139,7 @@ select {
 
 .social-icons i {
     margin-right: 20px;
-    color: #ff7f9c;
+    color:#f9c2ae;
 }
 
 .footer-container {
@@ -183,10 +148,17 @@ select {
     justify-content: flex-end;
     align-items: flex-end;
 }
+
+
 .form-contact{
+    margin-top: 2.5%;
     background-color: #f9f9f9;
     margin-right: 30%;
     margin-left: 30%;
+}
+
+.footer-container .contact-info{
+    color: #f9c2ae;
 }
 
 
@@ -432,3 +404,52 @@ h4{
     padding-right: 30%;
     padding-left: 30%;
 }
+
+.folder-link {
+    position: relative;
+    display: inline-block;
+}
+
+.folder-link::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 9999;
+}
+
+.folder-link:hover::after {
+    height: 100%;
+    opacity: 1;
+}
+
+/* CSS pour la galerie */
+.container {
+    margin-top: 20px;
+}
+
+.thumbnail {
+    width: 400px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    position: relative; /* Ajouter une position relative pour positionner le titre */
+}
+
+
+/* Appliquer une marge exacte des deux côtés de chaque écran */
+.container {
+    display: flex;
+    padding-left: 10%; /* Ajouter une marge de 10px à gauche de la zone de contenu */
+    padding-right: 10%; /* Ajouter une marge de 10px à droite de la zone de contenu */
+    box-sizing: border-box; /* Inclure les marges dans la largeur totale de la zone de contenu */
+}
+
+

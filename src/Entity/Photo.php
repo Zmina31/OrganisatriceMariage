@@ -17,7 +17,7 @@ class Photo
     private ?string $nom = null;
 
     #[ORM\ManyToOne(inversedBy: 'photos')]
-    private ?Mariage $photo = null;
+    private ?Mariage $mariage = null;
 
     public function getId(): ?int
     {
@@ -36,14 +36,14 @@ class Photo
         return $this;
     }
 
-    public function getPhoto(): ?Mariage
+    public function getMariage(): ?Mariage
     {
-        return $this->photo;
+        return $this->mariage;
     }
 
-    public function setPhoto(?Mariage $photo): static
+    public function setMariage(?Mariage $mariage): static
     {
-        $this->photo = $photo;
+        $this->mariage = $mariage;
 
         return $this;
     }

@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}
+    Contact
+{% endblock %}
 {% block body %}
     <div class="form-contact">
         <h1 class="contact-title">Demande de prise de contact pour votre projet</h1>
@@ -8,8 +10,5 @@
         <button>Valider</button>
         {{ form_end(form) }}
     </div>
-{% endblock %}
 
-{% block title %}
-    Contact
 {% endblock %}

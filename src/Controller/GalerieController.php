@@ -15,16 +15,13 @@ class GalerieController extends AbstractController
     public function photos(PhotoRepository $photoRepository, EntityManagerInterface $entityManager, MariageRepository $mariageRepository): Response
     {
         $mariages = $mariageRepository->findAll();
-        $photosByMariage = [];
 
-        foreach ($mariages as $mariage) {
-            $photo = $photoRepository->findBy(['mariage' => $mariage]);
-            $photosByMariage[$mariage->getId()] = $photo;
-        }
+
+
 
         return $this->render('galerie/index.html.twig', [
             'mariages' => $mariages,
-            'photosByMariage' => $photosByMariage,
+
         ]);
     }
 }

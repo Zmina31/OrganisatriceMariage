@@ -18,7 +18,7 @@ class Mariage
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\OneToMany(mappedBy: 'photo', targetEntity: Photo::class)]
+    #[ORM\OneToMany(mappedBy: 'mariage', targetEntity: Photo::class)]
     private Collection $photos;
 
     public function __construct()
@@ -55,7 +55,7 @@ class Mariage
     {
         if (!$this->photos->contains($photo)) {
             $this->photos->add($photo);
-            $photo->setPhoto($this);
+            $photo->setMariage($this);
         }
 
         return $this;
@@ -65,8 +65,8 @@ class Mariage
     {
         if ($this->photos->removeElement($photo)) {
             // set the owning side to null (unless already changed)
-            if ($photo->getPhoto() === $this) {
-                $photo->setPhoto(null);
+            if ($photo->getMariage() === $this) {
+                $photo->setMariage(null);
             }
         }
 

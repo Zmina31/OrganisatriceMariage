@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Témoignages en attente de validation{% endblock %}
+
+{% block body %}
+    <h1>Témoignages en attente de validation</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Contenu</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for temoignage in temoignagesNonValides %}
+            <tr>
+                <td>{{ temoignage.getNom() }}</td>
+                <td>{{ temoignage.getContenu() }}</td>
+                <td>
+                    <a href="{{ path('admin_valider_temoignage', {'id': temoignage.getId()}) }}">Valider</a>
+                    <a href="{{ path('admin_supprimer_temoignage', {'id': temoignage.getId()}) }}">Supprimer</a>
+                </td>
+            </tr>
+            <div class="alert alert-success">
+                Le témoignage a été validé/supprimé avec succès.
+            </div>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

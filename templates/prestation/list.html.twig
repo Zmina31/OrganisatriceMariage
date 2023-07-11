@@ -6,10 +6,10 @@
     <h1 class="pres-title">Les Prestations</h1>
 
     {% for prestation in prestations %}
-        {% if prestation.id != 12 %}
+        {% if prestation.id != 11 %}
             <div class="prestation">
-                <h2>{{ prestation.titre }}</h2>
-                <p>{{ prestation.paragraphe }}</p>
+                <h2>{{ prestation.nom }}</h2>
+                <p>{{ prestation.description }}</p>
                 <div class="prestation-footer">
                     <p class="prestation-price">Prix : {{ prestation.prix }} euros</p>
                     <a class="prestation-interest" href="{{ path('prestation_contact', {'id': prestation.id}) }}">

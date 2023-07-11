@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Prestation;
 use App\Entity\User;
 use App\Form\ContactFormType;
+use App\Repository\ContactRepository;
 use App\Repository\PrestationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,43 +20,62 @@ class ContactController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $event = new Contact();
-        $form = $this->createForm(ContactFormType::class, $event);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = new User();
-            $user->setNom($form->get("nom")->getData());
-
-            $entityManager->persist($event);
-            $entityManager->flush();
-
-
-        }
-        return $this->render('contact/contact.html.twig', [
-            'form' => $form,
-        ]);
-    }
-    #[Route('/contact/{id}', name: 'prestation_contact')] /*Pour l'onglet prestation affichage automatique*/
-    public function prestation(int $id, PrestationRepository $prestationRepository,Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $event = new Contact();
-        $event->setPrestation($prestationRepository->find($id));
+        $event->setStatus(0);
         $user = new User();
         $event->setUser($user);
+      /*  $prestation = new Prestation();
+        $event->setPrestation($prestation); */
+        $form = $this->createForm(ContactFormType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($event);
+            $entityManager->flush();
+
+        }
+        return $this->render('contact/contact.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/contact/{id}', name: 'prestation_contact')] /*Pour l'onglet prestation affichage automatique*/
+    public function prestation(int $id, PrestationRepository $prestationRepository, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $event = new Contact();
+        $event->setStatus(0);
+        $event->setPrestation($prestationRepository->find($id));
+        $user = new User();     //creer user
+        $event->setUser($user); //ds le new contact 41 tu me mets l'user
 
         $form = $this->createForm(ContactFormType::class, $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = new User();
-            $user->setNom($form->get("nom")->getData());
 
             $entityManager->persist($event);
             $entityManager->flush();
 
         }
         return $this->render('contact/contact.html.twig', [
-            'form' => $form,
+            'form' => $form->createView(),
+        ]);
+    }
+    #[Route('/contact/details/{id}', name: 'contact_detail')] /*Pour l'onglet prestation affichage automatique*/
+    public function details(int $id, ContactRepository $contactRepository, Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        $event = $contactRepository->find($id);
+        $form = $this->createForm(ContactFormType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager->persist($event);
+            $entityManager->flush();
+
+        }
+        return $this->render('contact/contact.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }
