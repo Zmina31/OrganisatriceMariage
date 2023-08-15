@@ -1,145 +1,69 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}GALERIES{% endblock %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('img/posters/') }}">
-{% endblock %}
-
+-
 {% block body %}
-<!-- Carousel wrapper -->
-<div
-        id="carouselMultiItemExample"
-        class="carousel slide carousel-dark text-center"
-        data-mdb-ride="carousel"
->
-    <!-- Controls -->
-    <div class="d-flex justify-content-center mb-4">
-        <button
-                class="carousel-control-prev position-relative"
-                type="button"
-                data-mdb-target="#carouselMultiItemExample"
-                data-mdb-slide="prev"
-        >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-                class="carousel-control-next position-relative"
-                type="button"
-                data-mdb-target="#carouselMultiItemExample"
-                data-mdb-slide="next"
-        >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <!-- Inner -->
-    <div class="carousel-inner py-4">
-        <!-- Single item -->
-        <div class="carousel-item active">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <img
-                                    src="{{ asset('img/posters/22.jpg') }}"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">Mariage d'Emmanuelle & David</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk
-                                    of the card's content.
-                                </p>
-                                <a href="martine.html.twig" class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
+    <nav class="secondnav">
+        <ul>
+            <li>
+                <a href="{{ path('app_galeries') }}" class="filter-link" data-filter="all">TOUT</a>
+            </li>
+            <li>
+                <a href="{{ path('app_galeries_filtrees', { 'id': 1 }) }}" class="filter-link" data-filter="1">EMMANUELLE
+                    & DAVID</a>
+            </li>
+            <li>
+                <a href="{{ path('app_galeries_filtrees', { 'id': 3 }) }}" class="filter-link" data-filter="3">L'AMOUR
+                    INTEMPOREL</a>
+            </li>
+            <li>
+                <a href="{{ path('app_galeries_filtrees', { 'id': 4 }) }}" class="filter-link" data-filter="4">AU
+                    CHATEAU</a>
+            </li>
+            <li>
+                <a href="{{ path('app_galeries_filtrees', { 'id': 5 }) }}" class="filter-link" data-filter="5">AU BORD
+                    DE L'EAU</a>
+            </li>
+        </ul>
+    </nav>
 
-                    <div class="col-lg-4 d-none d-lg-block">
-                        <div class="card">
-                            <img src="{{ asset('img/posters/16.jpg') }}"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">Mariage de Martine & Christian</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk
-                                    of the card's content.
-                                </p>
-                                <a href="#!" class="btn btn-primary">Button</a>
-                            </div>
+    <div class="container">
+        <div class="row">
+            <div class="thumbnail-gallery">
+                {% for mariage in mariages %}
+                    {% for photo in mariage.photos %}
+                        <div class="av-masonry-container isotope" style="position: relative">
+                            <div class="caption"></div>
+                            <div class="thumbnail"
+                                 style="background-image: url('{{ asset('img/posters/' ~ photo.nom) }}')"
+                                 data-filter="{{ mariage.id }}"></div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 d-none d-lg-block">
-                        <div class="card">
-                            <img
-                                    src="{{ asset('img/posters/8.jpg') }}"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">Mariage des aqueducs </h5>
-                                <p class="card-text">
-                                    L'amour intemporel
-                                </p>
-                                <a href="#!" class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Single item -->
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="card">
-                            <img
-                                    src="{{ asset('img/posters/4.jpg') }}"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">Mariage au chateau</h5>
-                                <p class="card-text">
-                                    La mariée et ses drôles de dames
-                                </p>
-                                <a href="#!" class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 d-none d-lg-block">
-                        <div class="card">
-                            <img
-                                    src="{{ asset('img/posters/14.jpg') }}"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">Mariage au bord de l'eau</h5>
-                                <p class="card-text">
-                                    Jusqu'au bout du monde
-                                </p>
-                                <a href="#!" class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 d-none d-lg-block">
-                        <div class="card">
-                            <img
-                                    src="https://mdbcdn.b-cdn.net/img/new/standard/nature/186.webp"
-                                    class="card-img-top"
-                                    alt="Hot Air Balloons"
-                            />
-                        </div>
-                    </div>
-                </div>
+                    {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
-    <!-- Inner -->
-</div>
-<!-- Carousel wrapper -->
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var filterLinks = document.querySelectorAll('.filter-link');
+            var thumbnails = document.querySelectorAll('.thumbnail');
+
+            filterLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    var filterValue = this.getAttribute('data-filter');
+
+                    thumbnails.forEach(function (thumbnail) {
+                        if (filterValue === 'all' || thumbnail.getAttribute('data-filter') === filterValue) {
+                            thumbnail.style.display = 'block';
+                        } else {
+                            thumbnail.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 {% endblock %}
-
-

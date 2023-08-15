@@ -17,14 +17,16 @@ class Temoignage
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: "text")]
     private ?string $contenu = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column]
-    private ?bool $status = false;
+    #[ORM\ManyToOne(inversedBy: 'temoignages')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Status $status = null;
+
 
     public function getId(): ?int
     {
@@ -67,15 +69,16 @@ class Temoignage
         return $this;
     }
 
-    public function isStatus(): ?bool
+    public function getStatus(): ?Status
     {
         return $this->status;
     }
 
-    public function setStatus(bool $status): static
+    public function setStatus(?Status $status): static
     {
         $this->status = $status;
 
         return $this;
     }
+
 }

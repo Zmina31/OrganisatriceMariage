@@ -32,8 +32,6 @@ class Contact
     #[ORM\Column(length: 255)]
     private ?string $precisions = null;
 
-    #[ORM\Column]
-    private ?bool $status = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?User $user = null;
@@ -118,17 +116,6 @@ class Contact
         return $this;
     }
 
-    public function isStatus(): ?bool
-    {
-        return $this->status;
-    }
-
-    public function setStatus(bool $status): static
-    {
-        $this->status = $status;
-
-        return $this;
-    }
 
     public function getUser(): ?User
     {

@@ -15,18 +15,19 @@ class ContactFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('user', UserFormType::class,[
-                'label'=>' ',
+            ->add('user', UserFormType::class, [
+                'label' => ' ',
             ])
-            ->add('date', DateType::class,[
+            ->add('date', DateType::class, [
+                'label' => 'Date souhaitée du mariage',
                 'html5' => true,
                 'widget' => 'single_text',
             ])
             ->add('ville')
-            ->add('invite', null,[
+            ->add('invite', null, [
                 "label" => 'Nombres invités'
             ])
-            ->add('destination', ChoiceType::class,[
+            ->add('destination', ChoiceType::class, [
                 'choices' => [
                     'Rhône-Alpes' => 'Rhône-Alpes',
                     'Loire' => 'Loire',
@@ -37,13 +38,12 @@ class ContactFormType extends AbstractType
             ])
             ->add('budget')
             ->add('precisions')
-            ->add('prestation', EntityType::class,[
-                'class' =>'App\Entity\Prestation',
+            ->add('prestation', EntityType::class, [
+                'class' => 'App\Entity\Prestation',
                 'choice_label' => 'nom',
                 'label' => 'Prestation',
                 'multiple' => false,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

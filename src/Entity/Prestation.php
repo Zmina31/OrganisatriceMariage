@@ -27,8 +27,6 @@ class Prestation
     #[ORM\OneToMany(mappedBy: 'prestation', targetEntity: Contact::class)]
     private Collection $prestation;
 
-    #[ORM\Column]
-    private ?bool $status = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?User $temoignage = null;
@@ -109,17 +107,6 @@ class Prestation
         return $this;
     }
 
-    public function isStatus(): ?bool
-    {
-        return $this->status;
-    }
-
-    public function setStatus(bool $status): static
-    {
-        $this->status = $status;
-
-        return $this;
-    }
 
     public function getTemoignage(): ?User
     {

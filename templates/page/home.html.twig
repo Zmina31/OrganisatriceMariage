@@ -3,39 +3,15 @@
 {% block body %}
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('img/posters/4.jpg') }}" class="my-carousel-image" alt="Image 1">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('img/posters/14.jpg') }}" class="my-carousel-image" alt="Image 2">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('img/posters/18.jpg') }}" class="my-carousel-image" alt="Image 3">
-            </div>
+            {% for image in images %}
+                <div class="carousel-item{% if loop.first %} active{% endif %}">
+                    <img src="{{ asset(image) }}" class="my-carousel-image" alt="Image {{ loop.index }}">
+                </div>
+            {% endfor %}
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Précédent</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Suivant</span>
-        </a>
     </div>
-    <h1>Organisation de mariages d'exception</h1>
-
-    <p class="p-accueil">
-        VOUS VOULEZ QUE CE BEL ÉVÈNEMENT SOIT VRAIMENT UNIQUE POUR VOUS ?
-        Vous avez des rêves plein la tête, des envies, mais vous ne savez pas si votre projet est possible à réaliser.
-        Par quoi commencer ? Qui contacter ?
-        Comment organiser et coordonner tous les aspects de votre mariage ? Comment ne rien oublier ?
-        Vous souhaitez vivre ce moment pleinement, détendus, et vous laissez porter, sans contrainte, pour profiter au maximum de ce jour magique ?
-        Nous avons l’équipe de wedding planners qu’il vous faut !
-        NOCE DE RÊVE VOUS CONSEILLE ET VOUS ACCOMPAGNE POUR RÉALISER VOS RÊVES !
-        Pour un accompagnement personnalisé et complet jusqu’à la coordination de votre Jour J ou pour une prestation « à la carte », nous mettons à votre disposition notre expérience, notre passion et nos partenaires pour que ce moment clé reste inoubliable.
-        Avec plus de 14 ans d’expérience et plus de 300 évènements organisés en France et à l’étranger, notre équipe de wedding planners est toujours à vos côtés pour que vous profitiez sereinement des moments importants de votre vie.</p>
-
-
+    <h1>{{ welcomeMessage }}</h1>
+    <p class="p-accueil">{{ description }}</p>
 {% endblock %}
 
 {% block title %}{{ parent() }} | ACCUEIL{% endblock %}

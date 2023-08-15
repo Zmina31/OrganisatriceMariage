@@ -3,8 +3,7 @@
 {% block title %}Administration{% endblock %}
 
 {% block body %}
-
-
+    <h1>Demande de prise de contact:</h1>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -16,16 +15,17 @@
         </thead>
         <tbody>
         {% for contact in contacts %}
-        <tr>
-            <td>{{ contact.user.nom }}</td>
-            <td>{{ contact.user.prenom }} </td>
-            <td>{{ contact.prestation.nom }} </td>
-            <td><a href="{{ path('contact_detail', {'id': contact.id }) }}">Voir</a></td>
-        </tr>
-        </tbody>
+            <tr>
+                <td>{{ contact.user.nom }}</td>
+                <td>{{ contact.user.prenom }}</td>
+                <td>{{ contact.prestation.nom }}</td>
+                <td><a href="{{ path('contact_detail', {'id': contact.id }) }}">Voir</a></td>
+            </tr>
         {% endfor %}
+        </tbody>
     </table>
 
+    <h1>Témoignages:</h1>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -36,13 +36,47 @@
         </thead>
         <tbody>
         {% for temoignage in temoignages %}
-        <tr>
-            <td>{{ temoignage.nom }}</td>
-            <td>{{ temoignage.contenu}} </td>
-            <td><a href="{{ path('temoignage_details', {'id': temoignage.id }) }}">Voir</a></td>
-        </tr>
-        </tbody>
+            <tr class="{% if temoignage.status.id == 2 %} status-validated {% elseif temoignage.status.id == 3 %} status-rejected {% endif %}">
+                <td>{{ temoignage.nom }}</td>
+                <td>{{ temoignage.contenu }}</td>
+                <td>
+                    {% if temoignage.status.id == 1 %}
+                        <a href="{{ path('temoignage_valider', {'id': temoignage.id}) }}">Valider</a> |
+                        <a href="{{ path('temoignage_refuser', {'id': temoignage.id}) }}">Refuser</a>
+                    {% elseif temoignage.status.id == 2 %}
+                        <a href="{{ path('temoignage_refuser', {'id': temoignage.id}) }}">Refuser</a>
+                        Validée
+                    {% elseif temoignage.status.id == 3 %}
+                        <a href="{{ path('temoignage_valider', {'id': temoignage.id}) }}">Valider</a>
+                        Rejetée
+                    {% endif %}
+                </td>
+            </tr>
         {% endfor %}
+        </tbody>
     </table>
-
 {% endblock %}
+    {#<a href="{{ path('app_change_password_email') }}" class="btn btn-primary">Modification du Mot de passe et Email</a>#}
+
+    {#<h2>Témoignages validés</h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Nom:</th>
+            <th scope="col">Témoignage:</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for temoignage in temoignagesValides %}
+            <tr>
+                <td>{{ temoignage.nom }}</td>
+                <td>{{ temoignage.contenu }}</td>
+                <td>
+                    <a href="{{ path('temoignage_details', {'id': temoignage.id}) }}">Voir les détails</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>#}

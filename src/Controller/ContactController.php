@@ -19,12 +19,15 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'app_contact')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+      /*
+       * Mis en commentaire car à chaque demande de contact ça m'affiche une nouvelle prestation ( à voir avec seb)
         $event = new Contact();
         $event->setStatus(0);
         $user = new User();
-        $event->setUser($user);
+        $event->setUser($user);*/
       /*  $prestation = new Prestation();
         $event->setPrestation($prestation); */
+        $event = new Contact(); // Déclaration de la variable $event
         $form = $this->createForm(ContactFormType::class, $event);
         $form->handleRequest($request);
 
@@ -42,7 +45,7 @@ class ContactController extends AbstractController
     public function prestation(int $id, PrestationRepository $prestationRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
         $event = new Contact();
-        $event->setStatus(0);
+       /* $event->setStatus(0);*/
         $event->setPrestation($prestationRepository->find($id));
         $user = new User();     //creer user
         $event->setUser($user); //ds le new contact 41 tu me mets l'user
