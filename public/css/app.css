@@ -1,6 +1,6 @@
 :root {
     --bs-tertiary-bg: #f9e1c9;
-    --bs-tertiary-bg-rgb: 249,225,201;
+    --bs-tertiary-bg-rgb: 249, 225, 201;
 }
 
 
@@ -49,13 +49,14 @@ main {
 
 /*NAVBAR*/
 
-.secondnav ul{
+.secondnav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: white;
 }
+
 li {
     float: left;
 }
@@ -70,9 +71,10 @@ li a {
 }
 
 li a:hover {
-   color: #f9e1c9;
+    color: #f9e1c9;
 
 }
+
 /*FIN NAVBAR*/
 
 .prestation {
@@ -167,7 +169,7 @@ select {
 
 .social-icons i {
     margin-right: 20px;
-    color:#f9c2ae;
+    color: #f9c2ae;
 }
 
 .footer-container {
@@ -178,14 +180,14 @@ select {
 }
 
 
-.form-contact{
+.form-contact {
     margin-top: 2.5%;
     background-color: #f9f9f9;
     margin-right: 30%;
     margin-left: 30%;
 }
 
-.footer-container .contact-info{
+.footer-container .contact-info {
     color: #f9c2ae;
 }
 
@@ -206,7 +208,7 @@ select {
     }
 }
 
-.p-accueil{
+.p-accueil {
     margin-left: 15%;
     margin-right: 15%;
     font-size: x-large;
@@ -214,6 +216,7 @@ select {
     line-height: 1.5;
     animation: fade-in 1s ease-in-out;
 }
+
 @keyframes fade-in {
     0% {
         opacity: 0;
@@ -224,8 +227,9 @@ select {
         transform: translateY(0);
     }
 }
+
 /*FIN DE PAGE A PROPOS (VIDEO + TEXTE)*/
-.end-container{
+.end-container {
     display: flex;
     align-items: center;
     justify-content: stretch;
@@ -233,35 +237,41 @@ select {
     margin-right: 20%;
     margin-top: 2%;
 }
-.list-group{
+
+.list-group {
     text-align: start;
 }
-.title2{
+
+.title2 {
     text-align: center;
     font-size: 150%;
 }
 
-.text-end{
+.text-end {
     flex: 1;
     font-size: 110%;
     text-align: center;
     padding-bottom: 2%;
 }
-.text-end ul{
+
+.text-end ul {
     list-style-type: none;
 }
-.video{
+
+.video {
     flex: 1;
 }
+
 @media (max-width: 768px) {
     .video {
         display: none; /* Masquer la vidéo */
     }
-    .title2{
+
+    .title2 {
         font-size: x-large;
     }
 
-    .image-section{
+    .image-section {
         display: none;
     }
 }
@@ -275,11 +285,12 @@ select {
     background-color: #fdf5e8;
     display: flex;
     justify-content: center;
-    border-bottom: 10px solid #f9e1c9 ;
+    border-bottom: 10px solid #f9e1c9;
     border-top: 10px solid #f9e1c9;
     margin-bottom: -10px;
 
 }
+
 @media (max-width: 768px) {
     .book-container {
         flex-direction: column;
@@ -293,11 +304,13 @@ select {
         padding: 10px;
     }
 }
- .title {
-     font-size: 30px;
-     margin-bottom: 20px;
-     text-align: center; /* Ajoutez cette ligne pour centrer le titre */
- }
+
+.title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center; /* Ajoutez cette ligne pour centrer le titre */
+}
+
 @media (max-width: 768px) {
     .title {
         font-size: 25px; /* Taille de police plus petite pour les petits écrans */
@@ -315,7 +328,8 @@ select {
     background-color: #fdf5e8;
     font-size: 20px;
 }
-.text-section .list-group-item{
+
+.text-section .list-group-item {
     background-color: #fdf5e8;
 }
 
@@ -326,10 +340,11 @@ select {
     max-width: 70%;
 }
 
-h4{
+h4 {
     margin-bottom: 0;
 }
-.text-section2 ul{
+
+.text-section2 ul {
     list-style-type: none;
 }
 
@@ -350,6 +365,7 @@ h4{
     display: flex;
     align-items: center;
 }
+
 .img-apropos {
     width: 35%;
     max-width: 300px;
@@ -381,7 +397,8 @@ h4{
     width: 30%;
     margin-right: 30px;
 }
-.intro-tt{
+
+.intro-tt {
     font-size: 20px;
 }
 
@@ -397,13 +414,13 @@ h4{
 
 }
 
-.imgNina{
+.imgNina {
     flex: 1;
     padding: 4%;
 }
 
 
-.tPhoto{
+.tPhoto {
     display: flex;
     padding-left: 25%;
     padding-right: 25%;
@@ -411,7 +428,7 @@ h4{
 
 }
 
-.tNina{
+.tNina {
     flex: 1;
     padding: 4%;
     font-size: larger;
@@ -428,7 +445,7 @@ h4{
     width: 50%;
 }
 
-.mariage2 img{
+.mariage2 img {
     margin-bottom: 2%;
 }
 
@@ -444,7 +461,7 @@ h4{
     background-color: #f7f5f3;
 }
 
-.form-t{
+.form-t {
     padding-right: 30%;
     padding-left: 30%;
 }
@@ -506,8 +523,9 @@ h4{
 /*ADMIN*/
 
 .status-rejected td {
-background-color: #fd6e61 !important;
+    background-color: #fd6e61 !important;
 }
+
 .status-validated td {
     background-color: #d3fdb7 !important;
 }
